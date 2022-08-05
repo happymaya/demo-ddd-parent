@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vobjs>
+  <vo class="cn.happymaya.ddp.product.entity.Product" tableName="Product">
+    <property name="id" column="id" isPrimaryKey="true"/>
+    <property name="name" column="name"/>
+    <property name="price" column="price"/>
+    <property name="unit" column="unit"/>
+    <property name="classify_id" column="classify_id"/>
+    <property name="supplier_id" column="supplier_id"/>
+    <property name="image" column="image"/>
+    <property name="original_price" column="original_price"/>
+    <property name="tip" column="tip"/>
+    <join name="classify" joinKey="classify_id" joinType="manyToOne"
+          class="cn.happymaya.ddp.product.entity.Classify"/>
+    <ref name="supplier" refKey="supplier_id" refType="manyToOne" 
+      bean="cn.happymaya.ddp.product.service.SupplierService"
+         method="loadSupplier" listMethod="loadSuppliers"/>
+  </vo>
+  <vo class="cn.happymaya.ddp.product.entity.Classify" tableName="Classify">
+  	<property name="id" column="id" isPrimaryKey="true"/>
+    <property name="name" column="name"/>
+    <property name="parent_id" column="parent_id"/>
+    <property name="layer" column="layer"/>
+  </vo>
+</vobjs>
